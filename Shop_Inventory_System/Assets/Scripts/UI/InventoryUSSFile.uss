@@ -1,0 +1,19 @@
+.container
+{
+	flex-grow: 1;
+	width: auto;
+	height: auto;
+	max-width: none;
+	max-height: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	-unity-font-definition: url('Assets/UnityDefaultRuntimeTheme.tss');
+	text-shadow: 2px 2px 2px rgba(0, 0,0,0.5);
+	color: rgb(255, 197, 0);
+}
+
+.inventory 
+{
+	background-image: url('Assets/Inventory.png');
+}
