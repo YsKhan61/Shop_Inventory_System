@@ -11,22 +11,16 @@ namespace SIS.ShopInventory
         public TextMeshProUGUI labelText;
         public Image underline;
 
-        TagSO itemTypeTag;
-        public TagSO ItemTypeTag => itemTypeTag;
+        TagSO _itemTypeTag;
+        public TagSO ItemTypeTag => _itemTypeTag;
 
         public void SetText(string text)
-        {
-            labelText.text = text;
-        }
+        => labelText.text = text;
 
         public void ShowSelectedMarker()
-        {
-            underline.enabled = true;
-        }
+        => underline.enabled = true;
 
         public void HideSelectedMarker()
-        {
-            underline.enabled = false;
-        }
+        => underline.enabled = false;
     }
 }

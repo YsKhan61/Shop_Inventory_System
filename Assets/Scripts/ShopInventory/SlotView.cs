@@ -1,38 +1,40 @@
 ﻿using SIS.Utilities;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace SIS.ShopInventory
 {
-    public class SlotView : MonoBehaviour
+    public class SlotView : MonoBehaviour, IPointerDownHandler
     {
-        [SerializeField]
-        Image icon;
+        [SerializeField, FormerlySerializedAs("icon")]
+        Image _icon;
 
-        [SerializeField]
-        TextMeshProUGUI stackCount;
+        [SerializeField, FormerlySerializedAs("stackCount")]
+        TextMeshProUGUI stackCountText;
 
-        TagSO itemTag;
+        private IStorageController _storageController;
+        TagSO _itemTag;
 
-        public void SetTag(TagSO tag)
+        public void OnPointerDown(PointerEventData eventData)
         {
-            itemTag = tag;
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                _storageController.ShowItemInfo(_itemTag);
+            }
         }
 
-        public void SetIcon(Sprite sprite)
-        {
-            icon.sprite = sprite;
-        }
+        public void SetStorageController(IStorageController controller) => _storageController = controller;
 
-        public void Show()
-        {
-            gameObject.SetActive(true);
-        }
+        public void SetTag(TagSO tag) => _itemTag = tag;
 
-        public void Hide()
-        {
-            gameObject.SetActive(false);
-        }
+        public void SetIcon(Sprite sprite) => _icon.sprite = sprite;
+
+        public void Show() => gameObject.SetActive(true);
+
+        public void Hide() => gameObject.SetActive(false);
+
     }
 }

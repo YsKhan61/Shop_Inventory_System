@@ -1,5 +1,6 @@
 ﻿using SIS.Utilities;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 namespace SIS.ShopInventory
@@ -14,6 +15,7 @@ namespace SIS.ShopInventory
         {
             if (Items.Length <= 0)
             {
+                Debug.LogError("No items found!");
                 items = null;
                 return false;
             }
@@ -29,6 +31,27 @@ namespace SIS.ShopInventory
             }
 
             return items.Count > 0;
+        }
+
+        public bool TryGetItemByTag(TagSO tag, out ItemDataSO item)
+        {
+            item = null;
+
+            if (Items.Length <= 0)
+            {
+                Debug.LogError("No items found!");
+                return false;
+            }
+
+            for (int i = 0, length = Items.Length; i < length; i++)
+            {
+                if (Items[i].NameTag == tag)
+                {
+                    item = Items[i];
+                }
+            }
+
+            return item != null;
         }
     }
 }

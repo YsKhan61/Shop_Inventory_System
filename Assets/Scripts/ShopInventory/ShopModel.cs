@@ -40,17 +40,9 @@ namespace SIS.ShopInventory
         }
 
         public bool TryGetItemsByType(TagSO typeTag, out List<ItemDataSO> items)
-        {
-            bool found = _data.ItemContainer.TryGetItemByType(typeTag, out items);
+            => _data.ItemContainer.TryGetItemByType(typeTag, out items);
 
-            if (!found)
-            {
-                Debug.LogError($"No items found for type tag {typeTag.name}!");
-                items = null;
-                return false;
-            }
-
-            return true;
-        }
+        public bool TryGetItemDataByTag(TagSO tag, out ItemDataSO data)
+            => _data.ItemContainer.TryGetItemByTag(tag, out data);
     }
 }

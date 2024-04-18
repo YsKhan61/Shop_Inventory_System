@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86984215b076e5546858037878011f4d, type: 3}
-  m_Name: Gold
+  m_Name: MoonCrystal
   m_EditorClassIdentifier: 
-  NameTag: {fileID: 11400000, guid: 435217183cc035245bac92a89f2b4ce7, type: 2}
-  TypeTag: {fileID: 11400000, guid: 8de02bb083c7282418c2954df00390b6, type: 2}
-  IconSprite: {fileID: 21300000, guid: 1f513067dc506a44aae72689d69077ef, type: 3}
+  NameTag: {fileID: 11400000, guid: 59f0aa54c2209494998f9b65f2081dea, type: 2}
+  TypeTag: {fileID: 11400000, guid: 62515bb4a3089c24e832c079383bee0a, type: 2}
+  IconSprite: {fileID: 21300000, guid: 668f1ae7ae4de3445b6a3ac9cdffc641, type: 3}
   RarityTag: {fileID: 11400000, guid: e16fea2f7cc23034e91b98d280824802, type: 2}
   Description: 
-  BuyPrice: 50
-  SellPrice: 40
-  Weight: 30
+  BuyPrice: 200
+  SellPrice: 180
+  Weight: 50
