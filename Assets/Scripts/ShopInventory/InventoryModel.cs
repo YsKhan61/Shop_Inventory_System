@@ -36,12 +36,6 @@ namespace SIS.ShopInventory
         }
         public int MaxWeight => _data.MaxWeight;
 
-        public bool CanStoreWeight(int weight)
-        {
-            int newWeight = _currentWeight + weight;
-            return newWeight <= MaxWeight;
-        }
-
         private int _coinsCount;
         public int CoinsCount
         {

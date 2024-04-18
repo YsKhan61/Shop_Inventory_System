@@ -64,43 +64,10 @@ namespace SIS.ShopInventory
 
                 CreateSlotsInTab(tab, items, _model.SlotPrefab, _view.TabContainer.transform);
 
-                /*foreach (ItemDataSO data in items)
-                {
-                    SlotView slot = CreateItemSlot(_model.SlotPrefab, _view.TabContainer.transform, data);
-                    tab.Slots.Add(slot);
-                }*/
-
                 buttonView.Button.onClick.AddListener(() => OnItemTypeTabButtonClicked(tab));
                 tab.Hide();
                 _tabs.Add(tab);
             }
         }
-
-        /*private ItemTypeTabButtonView CreateItemTabButton(TagSO tag)
-        {
-            ItemTypeTabButtonView button = Object.Instantiate(_model.ItemTypeTabButtonPrefab, _view.ItemTypeTabButtonContainer.transform);
-            button.gameObject.SetActive(true);
-            button.SetText(tag.name);
-            button.HideSelectedMarker();
-            return button;
-        }*/
-
-        /*private SlotView CreateItemSlot(ItemDataSO data)
-        {
-            SlotView slot = Object.Instantiate(_model.SlotPrefab, _view.TabContainer.transform);
-            slot.gameObject.SetActive(true);
-            slot.SetStorageController(this);
-            slot.SetTag(data.NameTag);
-            slot.SetIcon(data.IconSprite);
-            slot.Hide();
-            return slot;
-        }*/
-
-        /*private void OnItemTypeTabButtonClicked(ItemTab tab)
-        {
-            _selectedTab?.Hide();
-            _selectedTab = tab;
-            _selectedTab.Show();
-        }*/
     }
 }
