@@ -1,19 +1,13 @@
 ﻿using SIS.Utilities;
 using System.Collections.Generic;
-using UnityEngine;
 
 
 namespace SIS.ShopInventory
 {
-
-    public class ShopController : IStorageController
+    public class ShopController : StorageController
     {
         ShopModel _model;
         ShopView _view;
-
-        private List<ItemTab> _tabs = new();
-
-        private ItemTab _selectedTab;
 
         public ShopController(ShopModel model, ShopView view)
         {
@@ -29,18 +23,7 @@ namespace SIS.ShopInventory
             }
         }
 
-        public void Initialize()
-        {
-            CreateItemTabs();
-
-            if (_tabs.Count > 0)
-            {
-                _selectedTab = _tabs[0];
-                _selectedTab.Show();
-            }
-        }
-
-        public void ShowItemInfo(TagSO itemTag)
+        public override void ShowItemInfo(TagSO itemTag)
         {
             bool found = _model.TryGetItemDataByTag(itemTag, out ItemDataSO data);
             if (!found)
@@ -61,17 +44,17 @@ namespace SIS.ShopInventory
             _view.ItemInfoView.ShowItemInfo(info);
         }
 
-        private void CreateItemTabs()
+        protected override void CreateItemTabs()
         {
-            bool found = _model.TryGetItemTypeList(out TagSO[] list);
-            if (!found)
+            foreach (TagSO tag in _model.ItemTypes)
             {
-                return;
-            }
+                ItemTypeTabButtonView buttonView = 
+                    CreateItemTabButton(
+                        _model.ItemTypeTabButtonPrefab, 
+                        _view.ItemTypeTabButtonContainer.transform, 
+                        tag);
 
-            foreach (TagSO tag in list)
-            {
-                ItemTypeTabButtonView buttonView = CreateItemTabButton(tag);
+                ItemTab tab = CreateItemTab(tag, buttonView);
 
                 bool foundItems = _model.TryGetItemsByType(tag, out List<ItemDataSO> items);
                 if (!foundItems)
@@ -79,17 +62,13 @@ namespace SIS.ShopInventory
                     continue;
                 }
 
-                ItemTab tab = new()
-                {
-                    ItemType = tag,
-                    ButtonView = buttonView,
-                    Slots = new List<SlotView>(),
-                };
+                CreateSlotsInTab(tab, items, _model.SlotPrefab, _view.TabContainer.transform);
 
-                foreach (ItemDataSO data in items)
+                /*foreach (ItemDataSO data in items)
                 {
-                    tab.Slots.Add(CreateItemSlot(data));
-                }
+                    SlotView slot = CreateItemSlot(_model.SlotPrefab, _view.TabContainer.transform, data);
+                    tab.Slots.Add(slot);
+                }*/
 
                 buttonView.Button.onClick.AddListener(() => OnItemTypeTabButtonClicked(tab));
                 tab.Hide();
@@ -97,16 +76,16 @@ namespace SIS.ShopInventory
             }
         }
 
-        private ItemTypeTabButtonView CreateItemTabButton(TagSO tag)
+        /*private ItemTypeTabButtonView CreateItemTabButton(TagSO tag)
         {
             ItemTypeTabButtonView button = Object.Instantiate(_model.ItemTypeTabButtonPrefab, _view.ItemTypeTabButtonContainer.transform);
             button.gameObject.SetActive(true);
             button.SetText(tag.name);
             button.HideSelectedMarker();
             return button;
-        }
+        }*/
 
-        private SlotView CreateItemSlot(ItemDataSO data)
+        /*private SlotView CreateItemSlot(ItemDataSO data)
         {
             SlotView slot = Object.Instantiate(_model.SlotPrefab, _view.TabContainer.transform);
             slot.gameObject.SetActive(true);
@@ -115,13 +94,13 @@ namespace SIS.ShopInventory
             slot.SetIcon(data.IconSprite);
             slot.Hide();
             return slot;
-        }
+        }*/
 
-        private void OnItemTypeTabButtonClicked(ItemTab tab)
+        /*private void OnItemTypeTabButtonClicked(ItemTab tab)
         {
             _selectedTab?.Hide();
             _selectedTab = tab;
             _selectedTab.Show();
-        }
+        }*/
     }
 }

@@ -8,36 +8,14 @@ namespace SIS.ShopInventory
     {
         private ShopDataSO _data;
 
-        public ShopModel(ShopDataSO data)
-        {
-            this._data = data;
-        }
+        public ShopModel(ShopDataSO data) => _data = data;
 
         public ItemTypeTabButtonView ItemTypeTabButtonPrefab 
             => _data.ItemTypeTabButtonPrefab;
 
         public SlotView SlotPrefab => _data.SlotPrefab;
 
-        public bool TryGetItemTypeList(out TagSO[] list)
-        {
-            int itemTypeCount = _data.ItemContainer.ItemTypes.Length;
-
-            list = new TagSO[itemTypeCount];
-
-            if (list.Length == 0)
-            {
-                Debug.LogError("Shop data's item type list is empty!");
-                list = null;
-                return false;
-            }
-
-            for (int i = 0; i < itemTypeCount; i++)
-            {
-                list[i] = _data.ItemContainer.ItemTypes[i];
-            }
-
-            return true;
-        }
+        public TagSO[] ItemTypes => _data.ItemContainer.ItemTypes;
 
         public bool TryGetItemsByType(TagSO typeTag, out List<ItemDataSO> items)
             => _data.ItemContainer.TryGetItemByType(typeTag, out items);

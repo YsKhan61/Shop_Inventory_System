@@ -3,7 +3,7 @@
 
 namespace SIS.ShopInventory
 {
-    public class ShopView : MonoBehaviour
+    public class InventoryView : MonoBehaviour
     {
         [SerializeField]
         GameObject _itemTypeTabButtonContainer;
