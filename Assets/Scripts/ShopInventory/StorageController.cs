@@ -12,7 +12,7 @@ namespace SIS.ShopInventory
 
         public abstract void ShowItemInfo(TagSO itemTag);
 
-        public void Initialize()
+        public virtual void Initialize()
         {
             CreateItemTabs();
 

@@ -13,6 +13,17 @@ namespace SIS.ShopInventory
             _view = view;
         }
 
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            _model.OnCoinsCountUpdated += _view.SetCoinsCount;
+            _model.OnCurrentWeightChanged += _view.SetWeight;
+
+            _model.CoinsCount = 0;
+            _model.CurrentWeight = 0;
+        }
+
         public override void ShowItemInfo(TagSO itemTag)
         {
             
