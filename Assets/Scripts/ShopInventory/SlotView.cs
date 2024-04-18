@@ -27,14 +27,13 @@ namespace SIS.ShopInventory
         }
 
         public void SetStorageController(IStorageController controller) => _storageController = controller;
-
         public void SetTag(TagSO tag) => _itemTag = tag;
-
         public void SetIcon(Sprite sprite) => _icon.sprite = sprite;
-
         public void Show() => gameObject.SetActive(true);
-
         public void Hide() => gameObject.SetActive(false);
+        public void SetStackCount(int count) => stackCountText.text = count.ToString();
+        public void ShowStackCount() => stackCountText.gameObject.SetActive(true);
+        public void HideStackCount() => stackCountText.gameObject.SetActive(false);
 
     }
 }

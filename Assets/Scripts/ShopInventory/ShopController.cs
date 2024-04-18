@@ -31,7 +31,8 @@ namespace SIS.ShopInventory
 
             ItemInfo info = new()
             {
-                IsBought = false,
+                Tag = itemTag,
+                IsInInventory = false,
                 Name = data.name,
                 IconSprite = data.IconSprite,
                 Description = data.Description,
@@ -40,6 +41,10 @@ namespace SIS.ShopInventory
                 QuantityToTrade = 1,
                 MaxQuantityToTrade = 5
             };
+
+            ReturnMessage message = EventService.Instance.OnItemSelectedInShop.InvokeEvent(data.BuyPrice, data.Weight);
+            info.IsBuyable = message.IsSuccess;
+            info.Message = message.Message;
 
             _view.ItemInfoView.ShowItemInfo(info);
         }

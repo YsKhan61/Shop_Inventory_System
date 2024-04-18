@@ -1,11 +1,14 @@
-﻿using UnityEngine;
+﻿using SIS.Utilities;
+using UnityEngine;
 
 
 namespace SIS.ShopInventory
 {
     public struct ItemInfo
     {
-        public bool IsBought;
+        public TagSO Tag;
+        public bool IsInInventory;
+        public bool IsBuyable;
         public string Name;
         public Sprite IconSprite;
         public string Description;
@@ -13,5 +16,6 @@ namespace SIS.ShopInventory
         public string Rarity;
         public int QuantityToTrade;
         public int MaxQuantityToTrade;
+        public string Message;
     }
 }

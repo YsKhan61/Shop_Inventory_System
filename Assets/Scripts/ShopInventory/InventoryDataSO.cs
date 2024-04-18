@@ -6,7 +6,7 @@ namespace SIS.ShopInventory
     [CreateAssetMenu(fileName = "InventoryData", menuName = "ScriptableObjects/InventoryDataSO", order = 1)]
     public class  InventoryDataSO : ScriptableObject
     {
-        public TagSO[] ItemTypes;
+        public ItemContainerSO ItemContainer;
 
         public int MaxWeight;
 

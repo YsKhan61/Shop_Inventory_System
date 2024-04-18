@@ -34,11 +34,11 @@ namespace SIS.ShopInventory
             return button;
         }
 
-        protected ItemTab CreateItemTab(TagSO tag, ItemTypeTabButtonView buttonView)
+        protected ItemTab CreateItemTab(TagSO typeTag, ItemTypeTabButtonView buttonView)
         {
             return new ItemTab()
             {
-                ItemType = tag,
+                ItemType = typeTag,
                 ButtonView = buttonView,
                 Slots = new List<SlotView>()
             };
@@ -48,9 +48,14 @@ namespace SIS.ShopInventory
         {
             foreach (ItemDataSO data in items)
             {
-                SlotView slot = CreateItemSlot(prefab, parent, data);
-                tab.Slots.Add(slot);
+                CreateSlotAndAddInTab(tab, data, prefab, parent);
             }
+        }
+
+        protected void CreateSlotAndAddInTab(ItemTab tab, ItemDataSO data, SlotView prefab, Transform parent)
+        {
+            SlotView slot = CreateItemSlot(prefab, parent, data);
+            tab.Slots.Add(slot);
         }
 
         protected SlotView CreateItemSlot(SlotView prefab, Transform parent,  ItemDataSO data)
@@ -60,6 +65,7 @@ namespace SIS.ShopInventory
             slot.SetStorageController(this);
             slot.SetTag(data.NameTag);
             slot.SetIcon(data.IconSprite);
+            slot.HideStackCount();
             slot.Hide();
             return slot;
         }

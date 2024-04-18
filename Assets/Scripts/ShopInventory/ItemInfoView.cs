@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using SIS.Utilities;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,6 +43,9 @@ namespace SIS.ShopInventory
 
         [SerializeField]
         Button _subtractButton;
+
+        [SerializeField]
+        TextMeshProUGUI _notBuyableReasonText;
 
         private ItemInfo _itemInfo;
 
@@ -89,21 +93,35 @@ namespace SIS.ShopInventory
 
         private void ConfigureTradeButton()
         {
-            if (_itemInfo.IsBought)
+            if (_itemInfo.IsInInventory)
             {
                 ShowSellButton();
                 HideBuyButton();
+                HideNotBuyableReasonText();
             }
             else
             {
                 ShowBuyButton();
+
+                if (_itemInfo.IsBuyable)
+                {
+                    EnableBuyButton();
+                    HideNotBuyableReasonText();
+                }
+                else
+                {
+                    DisableBuyButton();
+                    SetNotBuyableReasonText(_itemInfo.Message);
+                    ShowNotBuyableReasonText();
+                }
+
                 HideSellButton();
             }
         }
 
         private void OnBuyButtonClicked()
         {
-            Debug.Log("Bought item " + _itemInfo.Name);
+            EventService.Instance.OnBuyItem.InvokeEvent(_itemInfo.Tag);
         }
 
         private void OnSellButtonClicked()
@@ -131,7 +149,14 @@ namespace SIS.ShopInventory
 
         private void ShowBuyButton() => _buyButton.gameObject.SetActive(true);
 
+        private void EnableBuyButton() => _buyButton.interactable = true;
+        private void DisableBuyButton() => _buyButton.interactable = false;
+
         private void HideBuyButton() => _buyButton.gameObject.SetActive(false);
 
+        private void ShowNotBuyableReasonText() => _notBuyableReasonText.gameObject.SetActive(true);
+        private void SetNotBuyableReasonText(string text) => _notBuyableReasonText.text = text;
+        private void HideNotBuyableReasonText() => _notBuyableReasonText.gameObject.SetActive(false);
+    
     }
 }

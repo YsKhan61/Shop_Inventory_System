@@ -14,7 +14,7 @@ namespace SIS.ShopInventory
 
         public InventoryModel(InventoryDataSO data) => _data = data;
 
-        public TagSO[] ItemTypes => _data.ItemTypes;
+        public TagSO[] ItemTypes => _data.ItemContainer.ItemTypes;
 
         public ItemTypeTabButtonView ItemTypeTabButtonPrefab
             => _data.ItemTypeTabButtonPrefab;
@@ -51,6 +51,11 @@ namespace SIS.ShopInventory
                 OnCoinsCountUpdated.Invoke(_coinsCount);
             }
         }
+
+        public bool TryGetItemDataByTag(TagSO tag, out ItemDataSO data) 
+            => _data.ItemContainer.TryGetItemByTag(tag, out data);
+
+        public SlotView SlotPrefab => _data.SlotPrefab;
     }
 
 }
