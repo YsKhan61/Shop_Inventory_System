@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86984215b076e5546858037878011f4d, type: 3}
+  m_Name: Crown
+  m_EditorClassIdentifier: 
+  NameTag: {fileID: 11400000, guid: 01e8a138a2fc10246977fc371df523b5, type: 2}
+  TypeTag: {fileID: 11400000, guid: 62515bb4a3089c24e832c079383bee0a, type: 2}
+  IconSprite: {fileID: 0}
+  RarityTag: {fileID: 11400000, guid: 5038b243c575f3247b03c34d86e7141c, type: 2}
+  Description: 
+  BuyPrice: 70
+  SellPrice: 60
+  Weight: 25

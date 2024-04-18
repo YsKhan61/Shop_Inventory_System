@@ -7,21 +7,21 @@ namespace SIS.ShopInventory
     public class ItemDataSO : ScriptableObject
     {
         [Tooltip("The tag is the name of the item")]
-        public TagSO tagName;
+        public TagSO NameTag;
 
-        public TagSO type;
+        public TagSO TypeTag;
 
-        public Sprite icon;
+        public Sprite IconSprite;
 
-        public TagSO rarity;
+        public TagSO RarityTag;
 
         [TextArea(20, 20)]
-        public string description;
+        public string Description;
 
-        public int buyPrice;
+        public int BuyPrice;
 
-        public int sellPrice;
+        public int SellPrice;
 
-        public int weight;
+        public int Weight;
     }
 }

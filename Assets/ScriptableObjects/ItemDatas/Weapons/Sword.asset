@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86984215b076e5546858037878011f4d, type: 3}
+  m_Name: Sword
+  m_EditorClassIdentifier: 
+  NameTag: {fileID: 11400000, guid: 6888ed916bf4313449e91ef0bcda5991, type: 2}
+  TypeTag: {fileID: 11400000, guid: bf7ee436eccade146a09beb4a6e803a5, type: 2}
+  IconSprite: {fileID: 0}
+  RarityTag: {fileID: 11400000, guid: ca7aea03c5a776e4ea8ffc03a1df4acc, type: 2}
+  Description: 
+  BuyPrice: 10
+  SellPrice: 5
+  Weight: 10

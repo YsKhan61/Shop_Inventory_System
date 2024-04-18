@@ -1,4 +1,5 @@
 ﻿using SIS.Utilities;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SIS.ShopInventory
@@ -15,9 +16,13 @@ namespace SIS.ShopInventory
         public ItemTypeTabButtonView ItemTypeTabButtonPrefab 
             => _data.ItemTypeTabButtonPrefab;
 
+        public SlotView SlotPrefab => _data.SlotPrefab;
+
         public bool TryGetItemTypeList(out TagSO[] list)
         {
-            list = new TagSO[_data.itemTypes.Length];
+            int itemTypeCount = _data.ItemContainer.ItemTypes.Length;
+
+            list = new TagSO[itemTypeCount];
 
             if (list.Length == 0)
             {
@@ -26,9 +31,23 @@ namespace SIS.ShopInventory
                 return false;
             }
 
-            for (int i = 0; i < _data.itemTypes.Length; i++)
+            for (int i = 0; i < itemTypeCount; i++)
             {
-                list[i] = _data.itemTypes[i];
+                list[i] = _data.ItemContainer.ItemTypes[i];
+            }
+
+            return true;
+        }
+
+        public bool TryGetItemsByType(TagSO typeTag, out List<ItemDataSO> items)
+        {
+            bool found = _data.ItemContainer.TryGetItemByType(typeTag, out items);
+
+            if (!found)
+            {
+                Debug.LogError($"No items found for type tag {typeTag.name}!");
+                items = null;
+                return false;
             }
 
             return true;

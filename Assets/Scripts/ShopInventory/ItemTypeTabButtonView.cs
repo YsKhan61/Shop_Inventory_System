@@ -13,12 +13,6 @@ namespace SIS.ShopInventory
 
         TagSO itemTypeTag;
         public TagSO ItemTypeTag => itemTypeTag;
-        
-
-        public void SetTag(TagSO tag)
-        {
-            itemTypeTag = tag;
-        }
 
         public void SetText(string text)
         {

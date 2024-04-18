@@ -12,10 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91003f2d6588f964ab2126242fd5b603, type: 3}
   m_Name: ShopData
   m_EditorClassIdentifier: 
-  itemTypes:
-  - {fileID: 11400000, guid: c58c6099b7f0e314b883339784d1604f, type: 2}
-  - {fileID: 11400000, guid: 8de02bb083c7282418c2954df00390b6, type: 2}
-  - {fileID: 11400000, guid: 62515bb4a3089c24e832c079383bee0a, type: 2}
-  - {fileID: 11400000, guid: bf7ee436eccade146a09beb4a6e803a5, type: 2}
-  items: []
+  ItemContainer: {fileID: 11400000, guid: c5ecfbddcf5660b4d8d4f2c66f591cb7, type: 2}
   ItemTypeTabButtonPrefab: {fileID: 8745571063403417285, guid: 281dc71de98d7094bb0894262582237f, type: 3}
+  SlotPrefab: {fileID: -4383706656819064963, guid: 9ec6bd681a88b434f9e69ac286c1a261, type: 3}
