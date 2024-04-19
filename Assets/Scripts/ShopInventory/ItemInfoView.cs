@@ -24,7 +24,16 @@ namespace SIS.ShopInventory
         TextMeshProUGUI _priceText;
 
         [SerializeField]
+        TextMeshProUGUI _weightText;
+
+        [SerializeField]
         TextMeshProUGUI _rarityText;
+
+        [SerializeField]
+        TextMeshProUGUI _totatPrice;
+
+        [SerializeField]
+        TextMeshProUGUI _totalWeight;
 
         [SerializeField]
         Button _buyButton;
@@ -79,9 +88,11 @@ namespace SIS.ShopInventory
             _iconImage.sprite = _itemInfo.IconSprite;
             _descriptionText.text = _itemInfo.Description;
             _priceText.text = _itemInfo.Price.ToString();
-            // _weightText.text = _itemInfo.Weight.ToString();              // add this line
+            _weightText.text = _itemInfo.Weight.ToString();
             _rarityText.text = _itemInfo.Rarity;
             _qtyText.text = _itemInfo.QuantityToTrade.ToString();
+
+            UpdateTotalPriceAndWeightText();
 
             ConfigureTradeButton();
             ConfigureAddButton();
@@ -141,6 +152,7 @@ namespace SIS.ShopInventory
 
             _itemInfo.QuantityToTrade++;
             _qtyText.text = _itemInfo.QuantityToTrade.ToString();
+            UpdateTotalPriceAndWeightText();
 
             ConfigureAddButton();
         }
@@ -149,6 +161,9 @@ namespace SIS.ShopInventory
         {
             _itemInfo.QuantityToTrade--;
             _qtyText.text = _itemInfo.QuantityToTrade.ToString();
+            UpdateTotalPriceAndWeightText();
+
+            ActivateAddButton();
 
             if (_itemInfo.QuantityToTrade == 1)
             {
@@ -197,6 +212,12 @@ namespace SIS.ShopInventory
         {
             int quantityInInventory = EventService.Instance.GetItemQuantityFromInventory.InvokeEvent(_itemInfo.Tag);
             return quantityInInventory >= _itemInfo.QuantityToTrade + 1;
+        }
+
+        private void UpdateTotalPriceAndWeightText()
+        {
+            _totatPrice.text = (_itemInfo.Price * _itemInfo.QuantityToTrade).ToString();
+            _totalWeight.text = (_itemInfo.Weight * _itemInfo.QuantityToTrade).ToString();
         }
 
         private void ShowSellButton() => _sellButton.gameObject.SetActive(true);

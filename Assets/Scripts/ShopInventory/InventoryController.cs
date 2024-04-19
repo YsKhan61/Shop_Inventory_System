@@ -59,6 +59,7 @@ namespace SIS.ShopInventory
                 IconSprite = data.IconSprite,
                 Description = data.Description,
                 Price = data.SellPrice,
+                Weight = data.Weight,
                 Rarity = data.RarityTag.name,
                 QuantityToTrade = 1,
             };
@@ -144,12 +145,15 @@ namespace SIS.ShopInventory
             else
             {
                 item.Quantity += qty;
+                _model.Items[itemTag] = item;
             }
 
             UpdateStackCountInTab(tab, itemTag, item);
             _selectedTab?.Hide();
             _selectedTab = tab;
             _selectedTab.Show();
+
+            EventService.Instance.OnItemBought.InvokeEvent(itemTag, qty);
         }
 
         private void OnSellItem(TagSO itemTag, int qty)
@@ -185,6 +189,8 @@ namespace SIS.ShopInventory
                     UpdateStackCountInTab(tab, itemTag, item);
                     break;
             }
+
+            EventService.Instance.OnItemSold.InvokeEvent(itemTag, qty);
         }
 
         private void UpdateStackCountInTab(ItemTab tab, TagSO itemTag, InventoryItem item)
