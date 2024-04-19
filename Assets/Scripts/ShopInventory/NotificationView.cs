@@ -16,6 +16,9 @@ namespace SIS.ShopInventory
         [SerializeField]
         TextMeshProUGUI _text;
 
+        [SerializeField]
+        AudioClip _notificationSound;
+
         private void OnEnable()
         {
             EventService.Instance.OnItemBought.AddListener(OnItemBought);
@@ -42,6 +45,8 @@ namespace SIS.ShopInventory
         {
             _text.text = text;
             _animator.CrossFade(_showClip.name, 0.1f);
+
+            EventService.Instance.OnPlayAudio.InvokeEvent(_notificationSound);
         }
     }
 }

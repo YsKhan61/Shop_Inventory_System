@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace SIS.Utilities
 {
     public struct InventoryData
@@ -19,6 +21,8 @@ namespace SIS.Utilities
         public DoubleEvent<TagSO, int> OnSellItem { get; private set; }
         public DoubleEvent<TagSO, int> OnItemBought { get; private set; }
         public DoubleEvent<TagSO, int> OnItemSold { get; private set; }
+        public Event<AudioClip> OnPlayAudio { get; private set; }
+
 
         public EventService()
         {
@@ -28,7 +32,7 @@ namespace SIS.Utilities
             OnSellItem = new();
             OnItemBought = new();
             OnItemSold = new();
+            OnPlayAudio = new();
         }
     }
 }
-
