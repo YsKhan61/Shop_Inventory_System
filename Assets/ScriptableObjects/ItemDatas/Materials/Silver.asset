@@ -16,7 +16,9 @@ MonoBehaviour:
   TypeTag: {fileID: 11400000, guid: 8de02bb083c7282418c2954df00390b6, type: 2}
   IconSprite: {fileID: 0}
   RarityTag: {fileID: 11400000, guid: 62afddc7d877c624bb4bd206ad6fc0d9, type: 2}
-  Description: 
+  Description: Glittering like moonlight on water, silver captivates with its cool
+    elegance, a precious metal cherished for adornment and currency, reflecting purity
+    and sophistication.
   BuyPrice: 35
   SellPrice: 30
   Weight: 30

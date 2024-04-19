@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: bb1d62548a0074e4a84b5675babeb560, type: 2}
   TypeTag: {fileID: 11400000, guid: c58c6099b7f0e314b883339784d1604f, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: b9bb1850880c3694c9db56bc54451115, type: 3}
   RarityTag: {fileID: 11400000, guid: ca7aea03c5a776e4ea8ffc03a1df4acc, type: 2}
-  Description: 
+  Description: Golden and viscous, honey drips from the comb, a sweet nectar harvested
+    by diligent bees, imbued with the essence of flowers and sunlight.
   BuyPrice: 15
   SellPrice: 12
   Weight: 10

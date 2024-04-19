@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: 9a8eaeb4617585d44a0d516b71353ca8, type: 2}
   TypeTag: {fileID: 11400000, guid: c58c6099b7f0e314b883339784d1604f, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: 90987958f78ea744998743c7fe62bc5a, type: 3}
   RarityTag: {fileID: 11400000, guid: dce8b137fbc3c8848bc9bc43d2a64232, type: 2}
-  Description: 
+  Description: "Swimming gracefully through azure depths, fish navigate their liquid
+    world with agility and grace, their scales shimmering like jewels beneath the
+    surface.\r"
   BuyPrice: 10
   SellPrice: 8
   Weight: 5

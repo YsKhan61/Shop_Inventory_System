@@ -16,7 +16,9 @@ MonoBehaviour:
   TypeTag: {fileID: 11400000, guid: 62515bb4a3089c24e832c079383bee0a, type: 2}
   IconSprite: {fileID: 0}
   RarityTag: {fileID: 11400000, guid: 62afddc7d877c624bb4bd206ad6fc0d9, type: 2}
-  Description: 
+  Description: Unfolding realms both real and imagined, maps chart the course of
+    exploration and discovery, guiding adventurers through landscapes vast and unknown,
+    their contours revealing the intricate tapestry of our world.
   BuyPrice: 70
   SellPrice: 65
   Weight: 10

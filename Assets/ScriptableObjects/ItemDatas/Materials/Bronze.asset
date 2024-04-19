@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: 9acafa97a76ac5942bb3d1fe7c19dd75, type: 2}
   TypeTag: {fileID: 11400000, guid: 8de02bb083c7282418c2954df00390b6, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: 09ddd402d0c137348a98132490ef446c, type: 3}
   RarityTag: {fileID: 11400000, guid: ca7aea03c5a776e4ea8ffc03a1df4acc, type: 2}
-  Description: 
+  Description: Glistening under sunlight's embrace, bronze radiates warmth and history,
+    a timeless alloy embodying strength and artistry in its amber hues.
   BuyPrice: 20
   SellPrice: 16
   Weight: 20

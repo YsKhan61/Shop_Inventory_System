@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: e4feab581bd01d14c9a8bfb00639a141, type: 2}
   TypeTag: {fileID: 11400000, guid: c58c6099b7f0e314b883339784d1604f, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: ae42d20ef073f504ab2831a61d9d45fe, type: 3}
   RarityTag: {fileID: 11400000, guid: dce8b137fbc3c8848bc9bc43d2a64232, type: 2}
-  Description: 
+  Description: Carrots, vibrant orange roots, burst with vitamin A and offer a sweet
+    crunch, enriching both salads and stews with their earthy flavor.
   BuyPrice: 10
   SellPrice: 8
   Weight: 5

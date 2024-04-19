@@ -43,7 +43,7 @@ namespace SIS.ShopInventory
 
         public override void ShowItemInfo(TagSO itemTag)
         {
-            bool found = _model.TryGetItemDataByTag(itemTag, out ItemDataSO data);
+            bool found = _model.TryGetItemData(itemTag, out ItemDataSO data);
             if (!found)
                 return;
 
@@ -100,44 +100,98 @@ namespace SIS.ShopInventory
             return message;
         }
 
-        private void OnBuyItem(TagSO itemTag)
+        private void OnBuyItem(TagSO itemTag, int qty)
         {
-            _view.ItemInfoView.Hide();
-
-            bool found = _model.TryGetItemDataByTag(itemTag, out ItemDataSO data);
+            bool found = _model.TryGetItemData(itemTag, out ItemDataSO data);
             if (!found)
                 return;
 
-            _model.CoinsCount -= data.BuyPrice;
-            _model.CurrentWeight += data.Weight;
+            _model.CoinsCount -= data.BuyPrice * qty;
+            _model.CurrentWeight += data.Weight * qty;
 
-            found = TryGetItemTabByTag(data.TypeTag, out ItemTab tab);
+            found = TryGetItemTab(data.TypeTag, out ItemTab tab);
             if (!found)
                 return;
 
-            CreateSlotAndAddInTab(tab, data, _model.SlotPrefab, _view.TabContainer.transform);
+            found = _model.Items.TryGetValue(itemTag, out InventoryItem item);
+            if (!found)
+            {
+                item = new InventoryItem { Quantity = qty };
+                _model.Items.Add(itemTag, item);
+                CreateSlotAndAddInTab(tab, data, _model.SlotPrefab, _view.TabContainer.transform);   
+            }
+            else
+            {
+                item.Quantity += qty;
+            }
+
+            UpdateStackCountInTab(tab, itemTag, item);
             _selectedTab?.Hide();
             _selectedTab = tab;
             _selectedTab.Show();
         }
 
-        private void OnSellItem(TagSO itemTag)
+        private void OnSellItem(TagSO itemTag, int qty)
         {
-            _view.ItemInfoView.Hide();
-
-            bool found = _model.TryGetItemDataByTag(itemTag, out ItemDataSO data);
+            bool found = _model.TryGetItemData(itemTag, out ItemDataSO data);
             if (!found)
                 return;
 
-            _model.CoinsCount += data.SellPrice;
-            _model.CurrentWeight -= data.Weight;
+            _model.CoinsCount += data.SellPrice * qty;
+            _model.CurrentWeight -= data.Weight * qty;
 
-            found = TryGetItemTabByTag(data.TypeTag, out ItemTab tab);
+            found = TryGetItemTab(data.TypeTag, out ItemTab tab);
             if (!found)
                 return;
 
-            RemoveSlotFromTab(tab, itemTag);
+            found = _model.Items.TryGetValue(itemTag, out InventoryItem item);
+            if (!found)
+            {
+                Debug.LogError("Item not found!");
+                return;
+            }
+
+            item.Quantity -= qty;
+            _model.Items[itemTag] = item;
+
+            switch (item.Quantity)
+            {
+                case 0:
+                    RemoveSlotFromTab(tab, itemTag);
+                    _model.Items.Remove(itemTag);
+                    break;
+                default:
+                    UpdateStackCountInTab(tab, itemTag, item);
+                    break;
+            }
         }
+
+        private void UpdateStackCountInTab(ItemTab tab, TagSO itemTag, InventoryItem item)
+        {
+            SlotView slotView = tab.Slots.Find(s => s.ItemTag == itemTag);
+            if (slotView == null)
+            {
+                Debug.LogError("Slot not found!");
+                return;
+            }
+
+            UpdateStackCountInSlot(slotView, item);
+        }
+
+        private void UpdateStackCountInSlot(SlotView slot, InventoryItem item)
+        {
+            if (item.Quantity == 1)
+            {
+                slot.HideStackCount();
+            }
+            else
+            {
+                slot.ShowStackCount();
+                slot.SetStackCount(item.Quantity);
+            }
+        }
+
+        
 
         private void RemoveSlotFromTab(ItemTab tab, TagSO itemTag)
         {
@@ -152,7 +206,7 @@ namespace SIS.ShopInventory
             Object.Destroy(slot.gameObject);
         }
 
-        private bool TryGetItemTabByTag(TagSO tag, out ItemTab tab)
+        private bool TryGetItemTab(TagSO tag, out ItemTab tab)
         {
             tab = _tabs.Find(t => t.ItemType == tag);
             if (tab == null)

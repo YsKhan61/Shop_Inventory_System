@@ -16,7 +16,10 @@ MonoBehaviour:
   TypeTag: {fileID: 11400000, guid: bf7ee436eccade146a09beb4a6e803a5, type: 2}
   IconSprite: {fileID: 0}
   RarityTag: {fileID: 11400000, guid: e16fea2f7cc23034e91b98d280824802, type: 2}
-  Description: 
+  Description: "With a flash of vibrant energy, the Super Arrow streaks through the
+    sky, propelled by the hero's courage and determination, blazing a trail of hope
+    and victory against all odds, a symbol of resilience and triumph in the face
+    of adversity.\r"
   BuyPrice: 60
   SellPrice: 45
   Weight: 20

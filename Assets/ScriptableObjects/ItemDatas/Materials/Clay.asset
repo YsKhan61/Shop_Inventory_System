@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: 99cbd0bdc0a74dc408d9680c0a79a606, type: 2}
   TypeTag: {fileID: 11400000, guid: 8de02bb083c7282418c2954df00390b6, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: 985bc3281ce162e4d8c56d4e14d2bef9, type: 3}
   RarityTag: {fileID: 11400000, guid: dce8b137fbc3c8848bc9bc43d2a64232, type: 2}
-  Description: 
+  Description: Malleable yet enduring, clay yields to the potter's touch, transforming
+    into vessels of utility and artistry, preserving ancient traditions in its earthly
+    embrace.
   BuyPrice: 6
   SellPrice: 3
   Weight: 15

@@ -18,4 +18,9 @@ namespace SIS.ShopInventory
         public int MaxQuantityToTrade;
         public string Message;
     }
+
+    public struct InventoryItem
+    {
+        public int Quantity;
+    }
 }

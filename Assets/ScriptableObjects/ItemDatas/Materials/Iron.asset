@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: 625f309918e44bc4da97487cb6623bfa, type: 2}
   TypeTag: {fileID: 11400000, guid: 8de02bb083c7282418c2954df00390b6, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: 44a30bbfc35948941bf3252b80bf83f1, type: 3}
   RarityTag: {fileID: 11400000, guid: 5038b243c575f3247b03c34d86e7141c, type: 2}
-  Description: 
+  Description: Forged in the heart of fiery furnaces, iron stands resilient, a stalwart
+    foundation of industry and innovation, shaping civilizations with its strength
+    and versatility.
   BuyPrice: 30
   SellPrice: 20
   Weight: 25

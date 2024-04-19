@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: 46a18045f45476b42b6274e0dd33eb0d, type: 2}
   TypeTag: {fileID: 11400000, guid: c58c6099b7f0e314b883339784d1604f, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: 1c53562f804b4614da73acad026da192, type: 3}
   RarityTag: {fileID: 11400000, guid: dce8b137fbc3c8848bc9bc43d2a64232, type: 2}
-  Description: 
+  Description: Versatile and humble, potatoes are culinary chameleons, whether mashed,
+    roasted, or fried, they offer comfort and nourishment with their earthy goodness.
   BuyPrice: 5
   SellPrice: 3
   Weight: 4

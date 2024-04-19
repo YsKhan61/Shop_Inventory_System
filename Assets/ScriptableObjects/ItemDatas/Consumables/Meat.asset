@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: d9a9486b1863fce4aafefd27b1423a8b, type: 2}
   TypeTag: {fileID: 11400000, guid: c58c6099b7f0e314b883339784d1604f, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: a3278a0831f74e346bff3dec9e948115, type: 3}
   RarityTag: {fileID: 11400000, guid: ca7aea03c5a776e4ea8ffc03a1df4acc, type: 2}
-  Description: 
+  Description: Sizzling on the grill or simmering in a savory stew, meat tantalizes
+    taste buds with its rich flavors and hearty textures, satisfying hunger with
+    every succulent bite.
   BuyPrice: 15
   SellPrice: 12
   Weight: 10

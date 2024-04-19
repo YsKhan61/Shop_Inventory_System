@@ -16,7 +16,9 @@ MonoBehaviour:
   TypeTag: {fileID: 11400000, guid: bf7ee436eccade146a09beb4a6e803a5, type: 2}
   IconSprite: {fileID: 0}
   RarityTag: {fileID: 11400000, guid: ca7aea03c5a776e4ea8ffc03a1df4acc, type: 2}
-  Description: 
+  Description: Swift and precise, an arrow pierces the air with purposeful velocity,
+    guided by the archer's aim toward its target, embodying both power and precision
+    in its flight through the ether.
   BuyPrice: 15
   SellPrice: 10
   Weight: 5

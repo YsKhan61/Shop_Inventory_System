@@ -16,7 +16,9 @@ MonoBehaviour:
   TypeTag: {fileID: 11400000, guid: 62515bb4a3089c24e832c079383bee0a, type: 2}
   IconSprite: {fileID: 0}
   RarityTag: {fileID: 11400000, guid: 5038b243c575f3247b03c34d86e7141c, type: 2}
-  Description: 
+  Description: Adorned with jewels and steeped in regal tradition, the crown symbolizes
+    authority and majesty, resting atop the head of rulers as a tangible emblem of
+    sovereignty and power.
   BuyPrice: 70
   SellPrice: 60
   Weight: 25

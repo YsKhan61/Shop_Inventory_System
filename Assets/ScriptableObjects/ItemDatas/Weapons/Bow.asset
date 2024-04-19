@@ -16,7 +16,9 @@ MonoBehaviour:
   TypeTag: {fileID: 11400000, guid: bf7ee436eccade146a09beb4a6e803a5, type: 2}
   IconSprite: {fileID: 0}
   RarityTag: {fileID: 11400000, guid: ca7aea03c5a776e4ea8ffc03a1df4acc, type: 2}
-  Description: 
+  Description: Crafted from wood and sinew, a bow bends to the archer's will, channeling
+    strength and skill into the release of its arrow, a timeless tool of hunting
+    and warfare, symbolizing both necessity and mastery of the natural world.
   BuyPrice: 15
   SellPrice: 10
   Weight: 5

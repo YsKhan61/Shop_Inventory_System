@@ -1,5 +1,6 @@
 ﻿using SIS.Utilities;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -12,7 +13,13 @@ namespace SIS.ShopInventory
 
         private InventoryDataSO _data;
 
-        public InventoryModel(InventoryDataSO data) => _data = data;
+        public Dictionary<TagSO, InventoryItem> Items;
+
+        public InventoryModel(InventoryDataSO data)
+        {
+            Items = new Dictionary<TagSO, InventoryItem>();
+            _data = data;
+        }
 
         public TagSO[] ItemTypes => _data.ItemContainer.ItemTypes;
 
@@ -52,7 +59,7 @@ namespace SIS.ShopInventory
             }
         }
 
-        public bool TryGetItemDataByTag(TagSO tag, out ItemDataSO data) 
+        public bool TryGetItemData(TagSO tag, out ItemDataSO data) 
             => _data.ItemContainer.TryGetItemByTag(tag, out data);
 
         public SlotView SlotPrefab => _data.SlotPrefab;

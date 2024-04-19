@@ -121,25 +121,31 @@ namespace SIS.ShopInventory
 
         private void OnBuyButtonClicked()
         {
-            EventService.Instance.OnBuyItem.InvokeEvent(_itemInfo.Tag);
+            EventService.Instance.OnBuyItem.InvokeEvent(_itemInfo.Tag, _itemInfo.QuantityToTrade);
+            Hide();
         }
 
         private void OnSellButtonClicked()
         {
-            EventService.Instance.OnSellItem.InvokeEvent(_itemInfo.Tag);
+            EventService.Instance.OnSellItem.InvokeEvent(_itemInfo.Tag, _itemInfo.QuantityToTrade);
+            Hide();
         }
 
         private void IncreaseItemQuantity()
         {
+            if (_itemInfo.QuantityToTrade >= _itemInfo.MaxQuantityToTrade)
+                return;
+
             _itemInfo.QuantityToTrade++;
-            _itemInfo.QuantityToTrade = Mathf.Clamp(_itemInfo.QuantityToTrade, 0, _itemInfo.MaxQuantityToTrade);
             _qtyText.text = _itemInfo.QuantityToTrade.ToString();
         }
 
         private void DecreaseItemQuantity()
         {
+            if (_itemInfo.QuantityToTrade <= 1)
+                return;
+
             _itemInfo.QuantityToTrade--;
-            _itemInfo.QuantityToTrade = Mathf.Clamp(_itemInfo.QuantityToTrade, 0, _itemInfo.MaxQuantityToTrade);
             _qtyText.text = _itemInfo.QuantityToTrade.ToString();
         }
 

@@ -14,8 +14,8 @@ namespace SIS.Utilities
 
         public DoubleFuncEvent<int, int, ReturnMessage> OnItemSelectedInShop { get; private set; }
 
-        public Event<TagSO> OnBuyItem { get; private set; }
-        public Event<TagSO> OnSellItem { get; private set; }
+        public DoubleEvent<TagSO, int> OnBuyItem { get; private set; }
+        public DoubleEvent<TagSO, int> OnSellItem { get; private set; }
 
         public EventService()
         {

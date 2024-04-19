@@ -16,7 +16,9 @@ MonoBehaviour:
   TypeTag: {fileID: 11400000, guid: 62515bb4a3089c24e832c079383bee0a, type: 2}
   IconSprite: {fileID: 21300000, guid: 668f1ae7ae4de3445b6a3ac9cdffc641, type: 3}
   RarityTag: {fileID: 11400000, guid: e16fea2f7cc23034e91b98d280824802, type: 2}
-  Description: 
+  Description: Glistening in lunar radiance, the moon crystal holds whispers of celestial
+    secrets, its ethereal glow captivating hearts and minds with the allure of magic
+    and mystery, a beacon of enchantment in the night sky.
   BuyPrice: 200
   SellPrice: 180
   Weight: 50

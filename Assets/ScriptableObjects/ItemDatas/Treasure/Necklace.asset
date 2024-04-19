@@ -16,7 +16,10 @@ MonoBehaviour:
   TypeTag: {fileID: 11400000, guid: 62515bb4a3089c24e832c079383bee0a, type: 2}
   IconSprite: {fileID: 0}
   RarityTag: {fileID: 11400000, guid: e16fea2f7cc23034e91b98d280824802, type: 2}
-  Description: 
+  Description: "Draping elegantly against the d\xE9colletage, a necklace weaves tales
+    of adornment and sentiment, each delicate link and shimmering gemstone a testament
+    to beauty and cherished moments, embracing the wearer in a symphony of grace
+    and style."
   BuyPrice: 100
   SellPrice: 90
   Weight: 45
