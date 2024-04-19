@@ -10,7 +10,7 @@ namespace SIS.ShopInventory
 
         public ShopModel(ShopDataSO data) => _data = data;
 
-        public ItemTypeTabButtonView ItemTypeTabButtonPrefab 
+        public TabButtonView TabButtonView 
             => _data.ItemTypeTabButtonPrefab;
 
         public SlotView SlotPrefab => _data.SlotPrefab;

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace SIS.ShopInventory
 {
-    public class ItemTypeTabButtonView : MonoBehaviour
+    public class TabButtonView : MonoBehaviour
     {
         public Button Button;
         public TextMeshProUGUI labelText;

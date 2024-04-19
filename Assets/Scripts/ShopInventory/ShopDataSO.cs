@@ -8,7 +8,7 @@ namespace SIS.ShopInventory
     {
         public ItemContainerSO ItemContainer;
 
-        public ItemTypeTabButtonView ItemTypeTabButtonPrefab;
+        public TabButtonView ItemTypeTabButtonPrefab;
 
         public SlotView SlotPrefab;
     }

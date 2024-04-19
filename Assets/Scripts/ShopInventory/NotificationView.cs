@@ -43,10 +43,10 @@ namespace SIS.ShopInventory
 
         private void ShowNotification(string text)
         {
+            EventService.Instance.OnPlayAudio.InvokeEvent(_notificationSound);
+
             _text.text = text;
             _animator.CrossFade(_showClip.name, 0.1f);
-
-            EventService.Instance.OnPlayAudio.InvokeEvent(_notificationSound);
         }
     }
 }

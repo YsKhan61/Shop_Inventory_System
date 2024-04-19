@@ -24,6 +24,7 @@ namespace SIS.Utilities
 
         private void OnPlayAudio(AudioClip audioClip)
         {
+            _audioSource.Stop();
             _audioSource.PlayOneShot(audioClip);
         }
     }

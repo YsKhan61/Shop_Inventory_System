@@ -71,7 +71,7 @@ namespace SIS.ShopInventory
         {
             foreach (TagSO typeTag in _model.ItemTypes)
             {
-                ItemTypeTabButtonView buttonView =
+                TabButtonView buttonView =
                     CreateItemTabButton(
                         _model.ItemTypeTabButtonPrefab,
                         _view.ItemTypeTabButtonContainer.transform,

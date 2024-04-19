@@ -25,16 +25,16 @@ namespace SIS.ShopInventory
 
         protected abstract void CreateItemTabs();
 
-        protected ItemTypeTabButtonView CreateItemTabButton(ItemTypeTabButtonView prefab, Transform parent, TagSO tag)
+        protected TabButtonView CreateItemTabButton(TabButtonView prefab, Transform parent, TagSO tag)
         {
-            ItemTypeTabButtonView button = Object.Instantiate(prefab, parent);
+            TabButtonView button = Object.Instantiate(prefab, parent);
             button.gameObject.SetActive(true);
             button.SetText(tag.name);
             button.HideSelectedMarker();
             return button;
         }
 
-        protected ItemTab CreateItemTab(TagSO typeTag, ItemTypeTabButtonView buttonView)
+        protected ItemTab CreateItemTab(TagSO typeTag, TabButtonView buttonView)
         {
             return new ItemTab()
             {

@@ -7,7 +7,7 @@ namespace SIS.ShopInventory
     public class ItemTab
     {
         public TagSO ItemType;
-        public ItemTypeTabButtonView ButtonView;
+        public TabButtonView ButtonView;
         public List<SlotView> Slots;
 
         public void Show()

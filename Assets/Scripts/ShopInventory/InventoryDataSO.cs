@@ -10,7 +10,7 @@ namespace SIS.ShopInventory
 
         public int MaxWeight;
 
-        public ItemTypeTabButtonView ItemTypeTabButtonPrefab;
+        public TabButtonView ItemTypeTabButtonPrefab;
 
         public SlotView SlotPrefab;
     }
