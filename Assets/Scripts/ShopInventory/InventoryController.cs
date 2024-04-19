@@ -13,7 +13,9 @@ namespace SIS.ShopInventory
             _model = model;
             _view = view;
 
-            EventService.Instance.OnItemSelectedInShop.AddListener(OnItemSelectedInShop);
+            // EventService.Instance.IsSelectedItemBuyable.AddListener(OnItemSelectedInShop);
+            EventService.Instance.GetInventoryData.AddListener(SendData);
+            EventService.Instance.GetItemQuantityFromInventory.AddListener(SendItemQuantity);
             EventService.Instance.OnBuyItem.AddListener(OnBuyItem);
             EventService.Instance.OnSellItem.AddListener(OnSellItem);
         }
@@ -25,7 +27,9 @@ namespace SIS.ShopInventory
                 tab.ButtonView.Button.onClick.RemoveAllListeners();
             }
 
-            EventService.Instance.OnItemSelectedInShop.RemoveListener(OnItemSelectedInShop);
+            // EventService.Instance.IsSelectedItemBuyable.RemoveListener(OnItemSelectedInShop);
+            EventService.Instance.GetInventoryData.RemoveListener(SendData);
+            EventService.Instance.GetItemQuantityFromInventory.RemoveListener(SendItemQuantity);
             EventService.Instance.OnBuyItem.RemoveListener(OnBuyItem);
             EventService.Instance.OnSellItem.RemoveListener(OnSellItem);
         }
@@ -54,10 +58,9 @@ namespace SIS.ShopInventory
                 Name = data.name,
                 IconSprite = data.IconSprite,
                 Description = data.Description,
-                Price = data.SellPrice.ToString(),
+                Price = data.SellPrice,
                 Rarity = data.RarityTag.name,
                 QuantityToTrade = 1,
-                MaxQuantityToTrade = 5
             };
 
             _view.ItemInfoView.ShowItemInfo(info);
@@ -81,7 +84,25 @@ namespace SIS.ShopInventory
             }
         }
 
-        private ReturnMessage OnItemSelectedInShop(int price, int weight)
+        private InventoryData SendData()
+        {
+            return new InventoryData
+            {
+                CoinsCount = _model.CoinsCount,
+                AvailableWeight = _model.MaxWeight - _model.CurrentWeight
+            };
+        }
+
+        private int SendItemQuantity(TagSO itemTag)
+        {
+            bool found = _model.Items.TryGetValue(itemTag, out InventoryItem item);
+            if (!found)
+                return 0;
+
+            return item.Quantity;
+        }
+
+        /*private ReturnMessage OnItemSelectedInShop(int price, int weight)
         {
             ReturnMessage message = new();
 
@@ -98,7 +119,7 @@ namespace SIS.ShopInventory
                 && weight <= _model.MaxWeight - _model.CurrentWeight;
 
             return message;
-        }
+        }*/
 
         private void OnBuyItem(TagSO itemTag, int qty)
         {

@@ -78,11 +78,14 @@ namespace SIS.ShopInventory
             _nameText.text = _itemInfo.Name;
             _iconImage.sprite = _itemInfo.IconSprite;
             _descriptionText.text = _itemInfo.Description;
-            _priceText.text = _itemInfo.Price;
+            _priceText.text = _itemInfo.Price.ToString();
+            // _weightText.text = _itemInfo.Weight.ToString();              // add this line
             _rarityText.text = _itemInfo.Rarity;
             _qtyText.text = _itemInfo.QuantityToTrade.ToString();
 
             ConfigureTradeButton();
+            ConfigureAddButton();
+            DeactivateSubtractButton();
 
             Show();
         }
@@ -90,6 +93,18 @@ namespace SIS.ShopInventory
         public void Show() => _container.SetActive(true);
 
         public void Hide() => _container.SetActive(false);
+
+        private void OnBuyButtonClicked()
+        {
+            EventService.Instance.OnBuyItem.InvokeEvent(_itemInfo.Tag, _itemInfo.QuantityToTrade);
+            Hide();
+        }
+
+        private void OnSellButtonClicked()
+        {
+            EventService.Instance.OnSellItem.InvokeEvent(_itemInfo.Tag, _itemInfo.QuantityToTrade);
+            Hide();
+        }
 
         private void ConfigureTradeButton()
         {
@@ -105,12 +120,12 @@ namespace SIS.ShopInventory
 
                 if (_itemInfo.IsBuyable)
                 {
-                    EnableBuyButton();
+                    ActivateBuyButton();
                     HideNotBuyableReasonText();
                 }
                 else
                 {
-                    DisableBuyButton();
+                    DeactivateBuyButton();
                     SetNotBuyableReasonText(_itemInfo.Message);
                     ShowNotBuyableReasonText();
                 }
@@ -119,44 +134,81 @@ namespace SIS.ShopInventory
             }
         }
 
-        private void OnBuyButtonClicked()
-        {
-            EventService.Instance.OnBuyItem.InvokeEvent(_itemInfo.Tag, _itemInfo.QuantityToTrade);
-            Hide();
-        }
-
-        private void OnSellButtonClicked()
-        {
-            EventService.Instance.OnSellItem.InvokeEvent(_itemInfo.Tag, _itemInfo.QuantityToTrade);
-            Hide();
-        }
-
         private void IncreaseItemQuantity()
         {
-            if (_itemInfo.QuantityToTrade >= _itemInfo.MaxQuantityToTrade)
-                return;
+            if (_itemInfo.QuantityToTrade == 1)
+                ActivateSubtractButton();
 
             _itemInfo.QuantityToTrade++;
             _qtyText.text = _itemInfo.QuantityToTrade.ToString();
+
+            ConfigureAddButton();
         }
 
         private void DecreaseItemQuantity()
         {
-            if (_itemInfo.QuantityToTrade <= 1)
-                return;
-
             _itemInfo.QuantityToTrade--;
             _qtyText.text = _itemInfo.QuantityToTrade.ToString();
+
+            if (_itemInfo.QuantityToTrade == 1)
+            {
+                DeactivateSubtractButton();
+            }
+        }
+
+        private void ConfigureAddButton()
+        {
+            if (_itemInfo.IsInInventory)
+            {
+                // Item is in inventory
+                if (!CanSellMoreItems())
+                {
+                    DeactivateAddButton();
+                }
+                else
+                {
+                    ActivateAddButton();
+                }
+
+            }
+            else
+            {
+                // Item is in shop
+                if (!CanBuyMoreItems())
+                {
+                    DeactivateAddButton();
+                }
+                else
+                {
+                    ActivateAddButton();
+                }
+            }
+        }
+
+        private bool CanBuyMoreItems()
+        {
+            int quantity = _itemInfo.QuantityToTrade + 1;
+            InventoryData inventoryData = EventService.Instance.GetInventoryData.InvokeEvent();
+            return inventoryData.CoinsCount >= (_itemInfo.Price * quantity) 
+                && inventoryData.AvailableWeight >= (_itemInfo.Weight * quantity);
+        }
+
+        private bool CanSellMoreItems()
+        {
+            int quantityInInventory = EventService.Instance.GetItemQuantityFromInventory.InvokeEvent(_itemInfo.Tag);
+            return quantityInInventory >= _itemInfo.QuantityToTrade + 1;
         }
 
         private void ShowSellButton() => _sellButton.gameObject.SetActive(true);
-
         private void HideSellButton() => _sellButton.gameObject.SetActive(false);
-
         private void ShowBuyButton() => _buyButton.gameObject.SetActive(true);
 
-        private void EnableBuyButton() => _buyButton.interactable = true;
-        private void DisableBuyButton() => _buyButton.interactable = false;
+        private void ActivateBuyButton() => _buyButton.interactable = true;
+        private void DeactivateBuyButton() => _buyButton.interactable = false;
+        private void ActivateAddButton() => _addButton.interactable = true;
+        private void DeactivateAddButton() => _addButton.interactable = false;
+        private void ActivateSubtractButton() => _subtractButton.interactable = true;
+        private void DeactivateSubtractButton() => _subtractButton.interactable = false;
 
         private void HideBuyButton() => _buyButton.gameObject.SetActive(false);
 

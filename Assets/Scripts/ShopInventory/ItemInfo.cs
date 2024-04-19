@@ -12,10 +12,10 @@ namespace SIS.ShopInventory
         public string Name;
         public Sprite IconSprite;
         public string Description;
-        public string Price;
+        public int Price;
+        public int Weight;
         public string Rarity;
         public int QuantityToTrade;
-        public int MaxQuantityToTrade;
         public string Message;
     }
 

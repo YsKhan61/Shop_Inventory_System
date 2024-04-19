@@ -20,6 +20,14 @@ namespace SIS.Utilities
 
     }
 
+    public class FuncEvent<T>
+    {
+        public event Func<T> baseEvent;
+        public T InvokeEvent() => baseEvent();
+        public void AddListener(Func<T> listener) => baseEvent += listener;
+        public void RemoveListener(Func<T> listener) => baseEvent -= listener;
+    }
+
     public class DoubleEvent<T, U>
     {
         public event Action<T, U> baseEvent = delegate { };
@@ -28,12 +36,12 @@ namespace SIS.Utilities
         public void RemoveListener(Action<T, U> listener) => baseEvent -= listener;
     }
 
-    public class  DoubleFuncEvent<T, U, V>
+    public class  DoubleFuncEvent<T, U>
     {
-        public event Func<T, U, V> baseEvent;
-        public V InvokeEvent(T type, U type2) => baseEvent(type, type2);
-        public void AddListener(Func<T, U, V> listener) => baseEvent += listener;
-        public void RemoveListener(Func<T, U, V> listener) => baseEvent -= listener;
+        public event Func<T, U> baseEvent;
+        public U InvokeEvent(T type) => baseEvent(type);
+        public void AddListener(Func<T, U> listener) => baseEvent += listener;
+        public void RemoveListener(Func<T, U> listener) => baseEvent -= listener;
     }
 }
 

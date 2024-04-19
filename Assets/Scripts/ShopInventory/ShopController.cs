@@ -36,15 +36,29 @@ namespace SIS.ShopInventory
                 Name = data.name,
                 IconSprite = data.IconSprite,
                 Description = data.Description,
-                Price = data.BuyPrice.ToString(),
+                Price = data.BuyPrice,
+                Weight = data.Weight,
                 Rarity = data.RarityTag.name,
-                QuantityToTrade = 1,
-                MaxQuantityToTrade = 5
+                QuantityToTrade = 1
             };
 
-            ReturnMessage message = EventService.Instance.OnItemSelectedInShop.InvokeEvent(data.BuyPrice, data.Weight);
-            info.IsBuyable = message.IsSuccess;
-            info.Message = message.Message;
+            // ReturnMessage message = EventService.Instance.IsSelectedItemBuyable.InvokeEvent(new TradeInfo { Price = data.BuyPrice, Weight = data.Weight });
+            InventoryData inventoryData = EventService.Instance.GetInventoryData.InvokeEvent();
+            info.IsBuyable = inventoryData.CoinsCount >= data.BuyPrice && inventoryData.AvailableWeight >= data.Weight;
+            /*info.IsBuyable = message.IsSuccess;
+            info.Message = message.Message;*/
+            
+            if (!info.IsBuyable)
+            {
+                if (inventoryData.CoinsCount < data.BuyPrice)
+                {
+                    info.Message = "Not enough money";
+                }
+                else
+                {
+                    info.Message = "Not enough space";
+                }
+            }
 
             _view.ItemInfoView.ShowItemInfo(info);
         }
