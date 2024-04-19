@@ -126,7 +126,7 @@ namespace SIS.ShopInventory
 
         private void OnSellButtonClicked()
         {
-            Debug.Log("Sold item " + _itemInfo.Name);
+            EventService.Instance.OnSellItem.InvokeEvent(_itemInfo.Tag);
         }
 
         private void IncreaseItemQuantity()

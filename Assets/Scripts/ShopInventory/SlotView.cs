@@ -16,7 +16,9 @@ namespace SIS.ShopInventory
         TextMeshProUGUI stackCountText;
 
         private IStorageController _storageController;
+
         TagSO _itemTag;
+        public TagSO ItemTag => _itemTag;
 
         public void OnPointerDown(PointerEventData eventData)
         {

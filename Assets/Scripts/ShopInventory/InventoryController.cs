@@ -15,6 +15,7 @@ namespace SIS.ShopInventory
 
             EventService.Instance.OnItemSelectedInShop.AddListener(OnItemSelectedInShop);
             EventService.Instance.OnBuyItem.AddListener(OnBuyItem);
+            EventService.Instance.OnSellItem.AddListener(OnSellItem);
         }
 
         ~InventoryController()
@@ -26,6 +27,7 @@ namespace SIS.ShopInventory
 
             EventService.Instance.OnItemSelectedInShop.RemoveListener(OnItemSelectedInShop);
             EventService.Instance.OnBuyItem.RemoveListener(OnBuyItem);
+            EventService.Instance.OnSellItem.RemoveListener(OnSellItem);
         }
 
         public override void Initialize()
@@ -98,11 +100,11 @@ namespace SIS.ShopInventory
             return message;
         }
 
-        private void OnBuyItem(TagSO tag)
+        private void OnBuyItem(TagSO itemTag)
         {
             _view.ItemInfoView.Hide();
 
-            bool found = _model.TryGetItemDataByTag(tag, out ItemDataSO data);
+            bool found = _model.TryGetItemDataByTag(itemTag, out ItemDataSO data);
             if (!found)
                 return;
 
@@ -117,6 +119,37 @@ namespace SIS.ShopInventory
             _selectedTab?.Hide();
             _selectedTab = tab;
             _selectedTab.Show();
+        }
+
+        private void OnSellItem(TagSO itemTag)
+        {
+            _view.ItemInfoView.Hide();
+
+            bool found = _model.TryGetItemDataByTag(itemTag, out ItemDataSO data);
+            if (!found)
+                return;
+
+            _model.CoinsCount += data.SellPrice;
+            _model.CurrentWeight -= data.Weight;
+
+            found = TryGetItemTabByTag(data.TypeTag, out ItemTab tab);
+            if (!found)
+                return;
+
+            RemoveSlotFromTab(tab, itemTag);
+        }
+
+        private void RemoveSlotFromTab(ItemTab tab, TagSO itemTag)
+        {
+            SlotView slot = tab.Slots.Find(s => s.ItemTag == itemTag);
+            if (slot == null)
+            {
+                Debug.LogError("Slot not found!");
+                return;
+            }
+
+            tab.Slots.Remove(slot);
+            Object.Destroy(slot.gameObject);
         }
 
         private bool TryGetItemTabByTag(TagSO tag, out ItemTab tab)
