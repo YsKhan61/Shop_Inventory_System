@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: e00b01cb42c0c7e43aa87d830bac00c9, type: 2}
   TypeTag: {fileID: 11400000, guid: 62515bb4a3089c24e832c079383bee0a, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: e04c76f5c2dc18146ae4ec6dee060a3c, type: 3}
   RarityTag: {fileID: 11400000, guid: 5038b243c575f3247b03c34d86e7141c, type: 2}
   Description: Embedded in layers of time, fossils are remnants of ancient life,
     whispering tales of bygone eras through the petrified remains of creatures long

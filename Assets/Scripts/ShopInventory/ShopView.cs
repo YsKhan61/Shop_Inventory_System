@@ -7,7 +7,7 @@ namespace SIS.ShopInventory
     {
         [SerializeField]
         GameObject _itemTypeTabButtonContainer;
-        public GameObject ItemTypeTabButtonContainer => _itemTypeTabButtonContainer;
+        public GameObject TabButtonContainer => _itemTypeTabButtonContainer;
 
         [SerializeField]
         GameObject _tabContainer;

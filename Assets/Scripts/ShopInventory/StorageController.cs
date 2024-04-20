@@ -70,7 +70,7 @@ namespace SIS.ShopInventory
             return slot;
         }
 
-        protected void OnItemTypeTabButtonClicked(ItemTab tab)
+        protected void OnTabButtonClicked(ItemTab tab)
         {
             _selectedTab?.Hide();
             _selectedTab = tab;

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: f9a8d72f80161b04fb2729ae3e22166e, type: 2}
   TypeTag: {fileID: 11400000, guid: 62515bb4a3089c24e832c079383bee0a, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: d130a6b273f54a94eb8562b7da7466f2, type: 3}
   RarityTag: {fileID: 11400000, guid: 62afddc7d877c624bb4bd206ad6fc0d9, type: 2}
   Description: Unfolding realms both real and imagined, maps chart the course of
     exploration and discovery, guiding adventurers through landscapes vast and unknown,

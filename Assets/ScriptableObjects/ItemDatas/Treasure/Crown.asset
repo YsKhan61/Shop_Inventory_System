@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: 01e8a138a2fc10246977fc371df523b5, type: 2}
   TypeTag: {fileID: 11400000, guid: 62515bb4a3089c24e832c079383bee0a, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: 145f72e1bd084614c9b23d5e136b9cb2, type: 3}
   RarityTag: {fileID: 11400000, guid: 5038b243c575f3247b03c34d86e7141c, type: 2}
   Description: Adorned with jewels and steeped in regal tradition, the crown symbolizes
     authority and majesty, resting atop the head of rulers as a tangible emblem of

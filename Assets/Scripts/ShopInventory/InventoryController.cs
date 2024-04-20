@@ -13,7 +13,6 @@ namespace SIS.ShopInventory
             _model = model;
             _view = view;
 
-            // EventService.Instance.IsSelectedItemBuyable.AddListener(OnItemSelectedInShop);
             EventService.Instance.GetInventoryData.AddListener(SendData);
             EventService.Instance.GetItemQuantityFromInventory.AddListener(SendItemQuantity);
             EventService.Instance.OnBuyItem.AddListener(OnBuyItem);
@@ -27,7 +26,6 @@ namespace SIS.ShopInventory
                 tab.ButtonView.Button.onClick.RemoveAllListeners();
             }
 
-            // EventService.Instance.IsSelectedItemBuyable.RemoveListener(OnItemSelectedInShop);
             EventService.Instance.GetInventoryData.RemoveListener(SendData);
             EventService.Instance.GetItemQuantityFromInventory.RemoveListener(SendItemQuantity);
             EventService.Instance.OnBuyItem.RemoveListener(OnBuyItem);
@@ -73,13 +71,13 @@ namespace SIS.ShopInventory
             {
                 TabButtonView buttonView =
                     CreateItemTabButton(
-                        _model.ItemTypeTabButtonPrefab,
-                        _view.ItemTypeTabButtonContainer.transform,
+                        _model.TabButtonView,
+                        _view.TabButtonContainer.transform,
                         typeTag);
 
                 ItemTab tab = CreateItemTab(typeTag, buttonView);
 
-                buttonView.Button.onClick.AddListener(() => OnItemTypeTabButtonClicked(tab));
+                buttonView.Button.onClick.AddListener(() => OnTabButtonClicked(tab));
                 tab.Hide();
                 _tabs.Add(tab);
             }
@@ -102,25 +100,6 @@ namespace SIS.ShopInventory
 
             return item.Quantity;
         }
-
-        /*private ReturnMessage OnItemSelectedInShop(int price, int weight)
-        {
-            ReturnMessage message = new();
-
-            if (price > _model.CoinsCount)
-            {
-                message.Message = "Not enough coins!";
-            }
-            else if (weight > _model.MaxWeight - _model.CurrentWeight)
-            {
-                message.Message = "Not enough space!";
-            }
-
-            message.IsSuccess = price <= _model.CoinsCount
-                && weight <= _model.MaxWeight - _model.CurrentWeight;
-
-            return message;
-        }*/
 
         private void OnBuyItem(TagSO itemTag, int qty)
         {

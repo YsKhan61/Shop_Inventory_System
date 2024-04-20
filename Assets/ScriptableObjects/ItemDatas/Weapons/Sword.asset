@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: 6888ed916bf4313449e91ef0bcda5991, type: 2}
   TypeTag: {fileID: 11400000, guid: bf7ee436eccade146a09beb4a6e803a5, type: 2}
-  IconSprite: {fileID: 21300000, guid: 4562bf13fb816514b861ea82390f2ba0, type: 3}
+  IconSprite: {fileID: 21300000, guid: a20f2bcc239312d43bb7c41e507186c2, type: 3}
   RarityTag: {fileID: 11400000, guid: ca7aea03c5a776e4ea8ffc03a1df4acc, type: 2}
   Description: A sword, the timeless emblem of valor and honor, gleams with the sheen
     of tempered steel, its edge honed to perfection, ready to defend the righteous

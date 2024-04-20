@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: 777c575554fa16e488f162f914019262, type: 2}
   TypeTag: {fileID: 11400000, guid: bf7ee436eccade146a09beb4a6e803a5, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: b50ed72f3dcabff4ea25eb5795311a8d, type: 3}
   RarityTag: {fileID: 11400000, guid: ca7aea03c5a776e4ea8ffc03a1df4acc, type: 2}
   Description: Swift and precise, an arrow pierces the air with purposeful velocity,
     guided by the archer's aim toward its target, embodying both power and precision

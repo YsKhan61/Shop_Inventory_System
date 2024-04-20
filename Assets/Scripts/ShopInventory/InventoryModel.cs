@@ -23,7 +23,7 @@ namespace SIS.ShopInventory
 
         public TagSO[] ItemTypes => _data.ItemContainer.ItemTypes;
 
-        public TabButtonView ItemTypeTabButtonPrefab
+        public TabButtonView TabButtonView
             => _data.ItemTypeTabButtonPrefab;
 
         private int _currentWeight;

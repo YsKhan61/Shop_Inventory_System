@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: 060cbd2076fc1624cb97ce78f67952f0, type: 2}
   TypeTag: {fileID: 11400000, guid: bf7ee436eccade146a09beb4a6e803a5, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: 00da31628e527bb4aa39856baf7bba5e, type: 3}
   RarityTag: {fileID: 11400000, guid: e16fea2f7cc23034e91b98d280824802, type: 2}
   Description: "With a flash of vibrant energy, the Super Arrow streaks through the
     sky, propelled by the hero's courage and determination, blazing a trail of hope

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameTag: {fileID: 11400000, guid: e85b5b94906bf61458ce4bcd1453f950, type: 2}
   TypeTag: {fileID: 11400000, guid: 8de02bb083c7282418c2954df00390b6, type: 2}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: 80342a43ac16adb46b6d163afad5f738, type: 3}
   RarityTag: {fileID: 11400000, guid: 62afddc7d877c624bb4bd206ad6fc0d9, type: 2}
   Description: Glittering like moonlight on water, silver captivates with its cool
     elegance, a precious metal cherished for adornment and currency, reflecting purity

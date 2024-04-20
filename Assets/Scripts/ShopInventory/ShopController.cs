@@ -42,11 +42,8 @@ namespace SIS.ShopInventory
                 QuantityToTrade = 1
             };
 
-            // ReturnMessage message = EventService.Instance.IsSelectedItemBuyable.InvokeEvent(new TradeInfo { Price = data.BuyPrice, Weight = data.Weight });
             InventoryData inventoryData = EventService.Instance.GetInventoryData.InvokeEvent();
             info.IsBuyable = inventoryData.CoinsCount >= data.BuyPrice && inventoryData.AvailableWeight >= data.Weight;
-            /*info.IsBuyable = message.IsSuccess;
-            info.Message = message.Message;*/
             
             if (!info.IsBuyable)
             {
@@ -70,10 +67,14 @@ namespace SIS.ShopInventory
                 TabButtonView buttonView = 
                     CreateItemTabButton(
                         _model.TabButtonView, 
-                        _view.ItemTypeTabButtonContainer.transform, 
+                        _view.TabButtonContainer.transform, 
                         tag);
 
                 ItemTab tab = CreateItemTab(tag, buttonView);
+
+                buttonView.Button.onClick.AddListener(() => OnTabButtonClicked(tab));
+                tab.Hide();
+                _tabs.Add(tab);
 
                 bool foundItems = _model.TryGetItemsByType(tag, out List<ItemDataSO> items);
                 if (!foundItems)
@@ -82,10 +83,6 @@ namespace SIS.ShopInventory
                 }
 
                 CreateSlotsInTab(tab, items, _model.SlotPrefab, _view.TabContainer.transform);
-
-                buttonView.Button.onClick.AddListener(() => OnItemTypeTabButtonClicked(tab));
-                tab.Hide();
-                _tabs.Add(tab);
             }
         }
     }
