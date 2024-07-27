@@ -20,9 +20,6 @@ inventory space.
 # Gameplay Video -
 https://www.youtube.com/watch?v=2kPS0-Brgqs&t=41s
 
-# Flow Diagram
-https://miro.com/app/board/uXjVKTz48gU=/
-
 # Screenshots
 ![Item description](https://github.com/YsKhan61/Shop_Inventory_System/assets/30847550/cdb44511-5678-4a88-8971-b992a1ceabda)
 ![Storage Panels](https://github.com/YsKhan61/Shop_Inventory_System/assets/30847550/bc6adfa9-54fe-40c9-b043-f2007f422c30)
